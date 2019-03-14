@@ -4,6 +4,18 @@
   SELECT *
   FROM users
 </cfquery>
-<cfdump  var="#myQuery#" />
+
+<cfset artistArray = [] />
+<cfloop query="myQuery">
+  <cfset arrayAppend(artistArray, myQuery.last_name & ', ' & myQuery.first_name) />
+</cfloop>
+
+<cfloop array="#artistArray#" item="item">
+  <cfoutput>
+    #item# <br/>
+  </cfoutput>
+</cfloop>
+
+
 
 <cfinclude  template="footer.cfm">
